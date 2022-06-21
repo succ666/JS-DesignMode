@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .alert{
+            position: absolute;
+            width: 380px;
+            height: 150px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .a-close{
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+        .a-close::after{
+            content: 'X';
+            width: 15px;
+            height: 15px;
+            color: black;
+        }
+        .follter{
+            position: absolute;
+            bottom: 0;
+            height: 30px;
+            width: 90%;
+            line-height: 30px;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+<button id="button1">右侧按钮提示框</button>
+<button id="button2">带标题的提示框</button>
+
+<script>
+    (function(){
+        var button1 = document.getElementById('button1');
+        button1.addEventListener('click', function () {
+            var rightalert = new RightAlert({
+                content:'右侧按钮提示框',
+                success: function(){
+                    console.log('确认')
+                },
+                fail:function(){
+                    console.log('取消')
+                }
+            })
+            rightalert.init()
+        });
+
+        var button2 = document.getElementById('button2');
+        button2.addEventListener('click',function () {
+            var titlealert = new TitleAlert({
+                title:'警告',
+                content:'我是一个带有标题的提示框',
+                success: function () {
+                    console.log('确认')
+                },
+                fail: function () {
+                    console.log('取消')
+                }
+            })
+            titlealert.init()
+        })
+    })()
+</script>
+
+<script src="../15模版方法模式.js"></script>
+</body>
+</html>
